@@ -5,6 +5,7 @@ use App\Http\Controllers\API\BeritaController;
 use App\Http\Controllers\API\DokterController;
 use App\Http\Controllers\API\JajaranDireksiController;
 use App\Http\Controllers\API\PagesController;
+use App\Http\Controllers\API\PoliklinikController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +25,12 @@ Route::group(['prefix' => 'profil'], function () {
     Route::apiResource('jajarandireksi', JajaranDireksiController::class);
 });
 
+Route::get('berita/popular', [BeritaController::class, 'indexPopular']);
 Route::apiResource('berita', BeritaController::class);
+Route::get('artikel/popular', [ArtikelController::class, 'indexPopular']);
 Route::apiResource('artikel', ArtikelController::class);
 Route::apiResource('dokter', DokterController::class);
+Route::apiResource('poliklinik', PoliklinikController::class);
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });

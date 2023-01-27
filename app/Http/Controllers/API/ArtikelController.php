@@ -7,9 +7,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Artikel;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class ArtikelController extends Controller
 {
+    // next buat helper
+    private function absolutePath($path)
+    {
+        return str_replace('\\', '/', public_path('storage/'.$path));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +24,26 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $data = Artikel::all();
+        $data = Artikel::orderBy('created_at', 'desc')->paginate(10);
+        if ($data) {
+            return ApiFormatter::createAPI(200, 'Success', $data);
+        } else {
+            return ApiFormatter::createAPI(400, 'Failed loading data.');
+        }
+    }
+
+    /**
+     * Display a listing of the popular resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexPopular()
+    {
+        $data = Artikel::orderBy('views', 'desc')
+                // ->where('created_at', '>=', now()->subDays(7))
+                ->take(5)
+                ->get();
+
         if ($data) {
             return ApiFormatter::createAPI(200, 'Success', $data);
         } else {
@@ -47,13 +73,17 @@ class ArtikelController extends Controller
             $request->validate([
                 'judul' => 'required',
                 'isi' => 'required',
-                'slug' => 'required'
             ]);
+
+            $image = $request->file('banner');
+            $path = '/images/artikel/';
+            $image->storeAs($path, $image->hashName(), 'public');
 
             $artikel = Artikel::create([
                 'judul' => $request->judul,
                 'isi' => $request->isi,
-                'slug' => $request->slug
+                'slug' => Str::slug($request->judul),
+                'banner' =>  $path.$image->hashName(),
             ]);
 
             $data = Artikel::where('id', '=', $artikel->id)->get();
@@ -75,7 +105,12 @@ class ArtikelController extends Controller
      */
     public function show($id)
     {
-        $data = Artikel::where('id', '=', $id)->get();
+        $data = Artikel::find($id);
+        
+        // Update views
+        $data->views++;
+        $data->save();
+        
         if ($data) {
             return ApiFormatter::createAPI(200, 'Success', $data);
         } else {
@@ -138,8 +173,13 @@ class ArtikelController extends Controller
     {
         try {
             $artikel = Artikel::findOrFail($id);
-            $data = $artikel->delete();
-            if ($data) {
+            if ($artikel) {
+                try {
+                    File::delete($this->absolutePath($data->banner));
+                } catch (\Throwable $th) {
+                    $fileNotExist = true;
+                }
+                $artikel->delete();
                 return ApiFormatter::createAPI(200, 'Success', $data);
             } else {
                 return ApiFormatter::createAPI(400, 'Failed deleting data.');

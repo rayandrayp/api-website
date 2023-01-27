@@ -18,6 +18,8 @@ class CreateArtikelsTable extends Migration
             $table->string('judul');
             $table->text('isi');
             $table->string('slug');
+            $table->integer('views')->default(0);
+            $table->string('banner')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

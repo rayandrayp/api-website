@@ -12,6 +12,8 @@ class Artikel extends Model
     protected $fillable = [
         'judul',
         'isi',
-        'slug'
+        'slug',
+        'views',
+        'banner',
     ];
 }
