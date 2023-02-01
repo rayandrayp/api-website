@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\API\ArtikelController;
+use App\Http\Controllers\API\ContohEncryptController;
 use App\Http\Controllers\API\BeritaController;
 use App\Http\Controllers\API\DokterController;
 use App\Http\Controllers\API\JajaranDireksiController;
 use App\Http\Controllers\API\PagesController;
 use App\Http\Controllers\API\PoliklinikController;
+use App\Http\Controllers\API\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,10 @@ Route::get('artikel/popular', [ArtikelController::class, 'indexPopular']);
 Route::apiResource('artikel', ArtikelController::class);
 Route::apiResource('dokter', DokterController::class);
 Route::apiResource('poliklinik', PoliklinikController::class);
+
+Route::post('encrypt-file', [ContohEncryptController::class, 'store']);
+Route::get('decrypt-file', [ContohEncryptController::class, 'decrypt']);
+Route::apiResource('review', ReviewController::class);
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
