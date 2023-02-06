@@ -8,6 +8,8 @@ use App\Http\Controllers\API\JajaranDireksiController;
 use App\Http\Controllers\API\PagesController;
 use App\Http\Controllers\API\PoliklinikController;
 use App\Http\Controllers\API\ReviewController;
+use App\Http\Controllers\API\PengaduanController;
+use App\Http\Controllers\API\JenisLaporanPengaduanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +39,8 @@ Route::apiResource('poliklinik', PoliklinikController::class);
 Route::post('encrypt-file', [ContohEncryptController::class, 'store']);
 Route::get('decrypt-file', [ContohEncryptController::class, 'decrypt']);
 Route::apiResource('review', ReviewController::class);
+Route::apiResource('pengaduan', PengaduanController::class);
+Route::apiResource('jenis-laporan-pengaduan', JenisLaporanPengaduanController::class);
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
