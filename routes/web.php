@@ -23,5 +23,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-Route::resource('berita', App\Http\Controllers\BeritaController::class);
-Route::resource('artikel', App\Http\Controllers\ArtikelController::class);
+// add login middleware
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('berita', App\Http\Controllers\BeritaController::class);
+    Route::resource('artikel', App\Http\Controllers\ArtikelController::class);
+});
+// Route::resource('berita', App\Http\Controllers\BeritaController::class);
+// Route::resource('artikel', App\Http\Controllers\ArtikelController::class);
