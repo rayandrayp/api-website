@@ -65,19 +65,14 @@ class BeritaController extends Controller
             ]);
 
             $data = Berita::where('id', '=', $berita->id)->get();
-            if ($data.isEmpty()) {
-               // return ApiFormatter::createAPI(400, 'Failed creating data.');
+            if (is_null($data)) {
                return redirect()->back()->with('error', 'Berita gagal ditambahkan');
-               // return redirect('berita/create')->with('error', 'Artikel gagal ditambahkan');
             }
         } catch (Exception $errmsg) {
-            // return ApiFormatter::createAPI(400, 'Failed updating data.');
+            dd($errmsg->getMessage());
             return redirect()->back()->with('error', 'Berita gagal ditambahkan');
-            // return redirect('berita/create')->with('error', 'Artikel gagal ditambahkan, Server error: '.$errmsg->getMessage());
-            // dd($errmsg->getMessage());
         }
         return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan');
-        // return redirect('berita')->with('success', 'Berita berhasil ditambahkan');
     }
 
     /**

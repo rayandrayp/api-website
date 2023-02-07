@@ -25,8 +25,10 @@
                     <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
                 </ul>
             </li> -->
-            <li><a class="nav-link" href="berita"><i class="far fa-file-alt"></i> <span>Berita</span></a></li>
-            <li><a class="nav-link" href="artikel"><i class="far fa-file-alt"></i> <span>Artikel</span></a></li>
+            <li><a class="nav-link" href="/api-website/berita"><i class="far fa-file-alt"></i> <span>Berita</span></a>
+            </li>
+            <li><a class="nav-link" href="/api-website/artikel"><i class="far fa-file-alt"></i> <span>Artikel</span></a>
+            </li>
             <!-- <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i>
                     <span>Bootstrap</span></a>

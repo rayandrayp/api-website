@@ -18,7 +18,7 @@
             <div class="col-12">
                 <div class="card">
                     <!-- add form -->
-                    <form method="POST" action="berita" enctype='multipart/form-data'>
+                    <form method="POST" action="/api-website/berita" enctype='multipart/form-data'>
                         @csrf
                         <div class="card-header">
                             <h4>Tambah Berita</h4>

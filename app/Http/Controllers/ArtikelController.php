@@ -57,19 +57,14 @@ class ArtikelController extends Controller
             ]);
 
             $data = Artikel::where('id', '=', $artikel->id)->get();
-            if ($data.isEmpty()) {
-                // return ApiFormatter::createAPI(400, 'Failed creating data.');
+            if (is_null($data)) {
                 return redirect()->back()->with('error', 'Artikel gagal ditambahkan');
-                // return redirect('artikel/create')->with('error', 'Artikel gagal ditambahkan');
             }
         } catch (Exception $errmsg) {
-            // return ApiFormatter::createAPI(400, 'Failed updating data.');
+            dd($errmsg->getMessage());
             return redirect()->back()->with('error', 'Artikel gagal ditambahkan');
-            // return redirect('artikel/create')->with('error', 'Artikel gagal ditambahkan, Server error: '.$errmsg->getMessage());
         }
-        // return ApiFormatter::createAPI(200, 'Success', $data);
         return redirect()->route('artikel.index')->with('success', 'Artikel berhasil ditambahkan');
-        // return redirect('artikel')->with('success', 'Artikel berhasil ditambahkan');
     }
 
     /**
