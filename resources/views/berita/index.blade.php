@@ -17,7 +17,7 @@
                 <p class="section-lead">Daftar berita</p>
             </div>
             <div class="d-flex justify-content-end align-items-center">
-                <a href="/berita/create" class="btn btn-primary">Tambah Berita</a>
+                <a href="berita/create" class="btn btn-primary">Tambah Berita</a>
             </div>
         </div>
 
