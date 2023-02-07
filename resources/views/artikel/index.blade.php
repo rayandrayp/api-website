@@ -17,7 +17,7 @@
                 <p class="section-lead">Daftar artikel</p>
             </div>
             <div class="d-flex justify-content-end align-items-center">
-                <a href="/artikel/create" class="btn btn-primary">Tambah Artikel</a>
+                <a href="artikel/create" class="btn btn-primary">Tambah Artikel</a>
             </div>
         </div>
 
