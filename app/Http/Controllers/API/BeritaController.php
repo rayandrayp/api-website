@@ -41,9 +41,23 @@ class BeritaController extends Controller
     {
         // get popular berita within 7 days
         $data = Berita::orderBy('views', 'desc')
-                // ->where('created_at', '>=', now()->subDays(7))
+                ->where('created_at', '>=', now()->subDays(7))
                 ->take(5)
                 ->get();
+        // check if data < 5
+        if (count($data) < 5) {
+            $data = Berita::orderBy('views', 'desc')
+                ->where('created_at', '>=', now()->subDays(14))
+                ->take(5)
+                ->get();
+        }
+        // check if data still < 5
+        if (count($data) < 5) {
+            $data = Berita::orderBy('views', 'desc')
+                ->where('created_at', '>=', now()->subDays(30))
+                ->take(5)
+                ->get();
+        }
         if ($data) {
             return ApiFormatter::createAPI(200, 'Success', $data);
         } else {
