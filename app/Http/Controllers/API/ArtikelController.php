@@ -40,10 +40,23 @@ class ArtikelController extends Controller
     public function indexPopular()
     {
         $data = Artikel::orderBy('views', 'desc')
-                // ->where('created_at', '>=', now()->subDays(7))
+                ->where('created_at', '>=', now()->subDays(7))
                 ->take(5)
                 ->get();
-
+        // check if data < 5
+        if (count($data) < 5) {
+            $data = Artikel::orderBy('views', 'desc')
+                ->where('created_at', '>=', now()->subDays(14))
+                ->take(5)
+                ->get();
+        }
+        // check if data still < 5
+        if (count($data) < 5) {
+            $data = Artikel::orderBy('views', 'desc')
+                ->where('created_at', '>=', now()->subDays(30))
+                ->take(5)
+                ->get();
+        }
         if ($data) {
             return ApiFormatter::createAPI(200, 'Success', $data);
         } else {
