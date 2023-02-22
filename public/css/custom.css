@@ -6,3 +6,12 @@
  */
 
 /*# sourceMappingURL=custom.css.map */
+
+.datepicker {
+    /* position relative */
+    position: relative;
+    /* z-index important */
+    z-index: 9999!important;
+    /* z-index: 9999; */
+  }
+  

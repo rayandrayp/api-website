@@ -13,8 +13,10 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('modules/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('modules/summernote/summernote-bs4.css') }}">
-    <link rel="stylesheet" href="{{ asset('modules/owlcarousel2/dist/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('modules/owlcarousel2/dist/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('modules/jquery-selectric/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css')}}">
+    <link rel="stylesheet" href="{{ asset('modules/owlcarousel2/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('modules/owlcarousel2/dist/assets/owl.theme.default.min.css') }}">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -70,9 +72,11 @@
     <script src="{{ asset('modules/chart.min.js') }}"></script>
     <script src="{{ asset('modules/owlcarousel2/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('modules/summernote/summernote-bs4.js') }}"></script>
+    <script src="{{ asset('modules/sweetalert/sweetalert.min.js') }}"></script>
+
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/index.js') }}"></script>
+    <!-- <script src="{{ asset('js/page/index.js') }}"></script> -->
 
     <!-- Template JS File -->
     <script src="{{ asset('js/scripts.js') }}"></script>
