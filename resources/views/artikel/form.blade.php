@@ -73,3 +73,10 @@
     </div>
 </section>
 @endsection
+
+@section('script')
+<script src="{{ asset('modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
+<script src="{{ asset('modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
+<script src="{{ asset('modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+<script src="{{ asset('js/page/features-post-create.js') }}"></script>
+@endsection

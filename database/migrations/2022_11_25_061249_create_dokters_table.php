@@ -14,10 +14,11 @@ class CreateDoktersTable extends Migration
     public function up()
     {
         Schema::create('dokter', function (Blueprint $table) {
-            $table->id();
-            $table->string('kd_dokter');
+            $table->string('kd_dokter')->primary();
+            $table->foreignId('kd_sps')->constrained('spesialis');
             $table->string('nm_dokter');
-            $table->string('imagepath');
+            $table->string('imagepath')->nullable();
+            $table->enum('status', ['0', '1'])->default('1');
             $table->timestamps();
         });
     }

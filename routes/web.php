@@ -17,7 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -27,6 +31,10 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('berita', App\Http\Controllers\BeritaController::class);
     Route::resource('artikel', App\Http\Controllers\ArtikelController::class);
+    Route::resource('dokter', App\Http\Controllers\DokterController::class);
+    Route::resource('minat-klinis', App\Http\Controllers\MinatKlinisController::class);
+    Route::resource('prestasi-dokter', App\Http\Controllers\PrestasiDokterController::class);
+    Route::resource('pendidikan-dokter', App\Http\Controllers\PendidikanDokterController::class);
 });
 // Route::resource('berita', App\Http\Controllers\BeritaController::class);
 // Route::resource('artikel', App\Http\Controllers\ArtikelController::class);
