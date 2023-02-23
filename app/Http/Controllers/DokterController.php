@@ -29,7 +29,7 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $list_dokter = Dokter::with('spesialis','minat_klinis','prestasi','pendidikan')->paginate(10);
+        $list_dokter = Dokter::with('spesialis','minat_klinis','prestasi','pendidikan')->get();
         return view('dokter.index', compact('list_dokter'));
     }
 
