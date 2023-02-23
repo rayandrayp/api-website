@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ asset('modules/owlcarousel2/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('modules/owlcarousel2/dist/assets/owl.theme.default.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('modules/datatables/datatables.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css') }}">
+
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components.css') }}">
@@ -73,6 +78,9 @@
     <script src="{{ asset('modules/owlcarousel2/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('modules/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('modules/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('modules/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
 
 
     <!-- Page Specific JS File -->

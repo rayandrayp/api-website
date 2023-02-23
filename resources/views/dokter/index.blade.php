@@ -19,54 +19,41 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-md">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nama Dokter</th>
-                                    <th>Spesialis</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                                @foreach ($list_dokter as $dokter)
-                                <tr>
-                                    <td>{{ $dokter->kd_dokter }}</td>
-                                    <td>{{ $dokter->nm_dokter }}</td>
-                                    <td>{{ $dokter->spesialis->nm_sps }}</td>
-                                    <td>
-                                        @if ($dokter->status == 1)
-                                        <div class="badge badge-success">Active</div>
-                                        @else
-                                        <div class="badge badge-danger">Non Active</div>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('dokter.edit', $dokter->kd_dokter) }}"
-                                            class="btn btn-warning">Edit</a>
-                                    </td>
-                                </tr>
-                                @endforeach
+                            <table class="table table-striped" id="table-dokter">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nama Dokter</th>
+                                        <th>Spesialis</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($list_dokter as $dokter)
+                                    <tr>
+                                        <td>{{ $dokter->kd_dokter }}</td>
+                                        <td>{{ $dokter->nm_dokter }}</td>
+                                        <td>{{ $dokter->spesialis->nm_sps }}</td>
+                                        <td>
+                                            @if ($dokter->status == 1)
+                                            <div class="badge badge-success">Active</div>
+                                            @else
+                                            <div class="badge badge-danger">Non Active</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('dokter.edit', $dokter->kd_dokter) }}"
+                                                class="btn btn-warning">Edit</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="card-footer text-right">
                         <nav class="d-inline-block">
-                            <ul class="pagination mb-0">
-                                <li class="page-item">
-                                    <a class="page-link" href="{{ $list_dokter->previousPageUrl() }}">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </a>
-                                </li>
-                                @for ($i = 1; $i <= $list_dokter->lastPage(); $i++)
-                                    <li class="page-item {{ ($list_dokter->currentPage() == $i) ? ' active' : '' }}">
-                                        <a class="page-link" href="{{ $list_dokter->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                    @endfor
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ $list_dokter->nextPageUrl() }}">
-                                            <i class="fas fa-chevron-right"></i>
-                                        </a>
-                                    </li>
-                            </ul>
                         </nav>
                     </div>
                 </div>
@@ -82,5 +69,11 @@
 <script src="{{ asset('modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ asset('js/page/features-post-create.js') }}"></script>
 <script src="{{ asset('modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+<script>
+$(document).ready(function() {
+    $('#table-dokter').DataTable();
+});
+</script>
 
 @endsection
