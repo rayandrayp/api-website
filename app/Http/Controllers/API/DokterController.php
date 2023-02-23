@@ -17,7 +17,7 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $data = Dokter::all();
+        $data = Dokter::with('minat_klinis', 'prestasi', 'pendidikan')->get();
         if ($data) {
             return ApiFormatter::createAPI(200, 'Success', $data);
         } else {
@@ -75,7 +75,7 @@ class DokterController extends Controller
      */
     public function show($id)
     {
-        $data = Dokter::where('id', '=', $id)->get();
+        $data = Dokter::with('minat_klinis', 'prestasi', 'pendidikan')->find($id);
         if ($data) {
             return ApiFormatter::createAPI(200, 'Success', $data);
         } else {
