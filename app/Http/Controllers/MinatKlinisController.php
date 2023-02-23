@@ -46,7 +46,7 @@ class MinatKlinisController extends Controller
         }catch(\Exception $e){
             return response()->json(['error' => $e->getMessage()], 500);
         }
-        return response()->json(['success' => 'Minat Klinis berhasil ditambahkan', 'minat' => $minat], 200);
+        return response()->json(['success' => 'Minat Klinis berhasil ditambahkan', 'data' => $minat], 200);
     }
 
     /**

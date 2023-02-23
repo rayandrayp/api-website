@@ -31,4 +31,13 @@ class Dokter extends Model
         return $this->hasMany(MinatKlinis::class, 'kd_dokter', 'kd_dokter');
     }
 
+    public function prestasi()
+    {
+        return $this->hasMany(PrestasiDokter::class, 'kd_dokter', 'kd_dokter')->orderBy('tahun', 'desc');
+    }
+
+    public function pendidikan()
+    {
+        return $this->hasMany(PendidikanDokter::class, 'kd_dokter', 'kd_dokter')->orderBy('tahun', 'desc');
+    }
 }

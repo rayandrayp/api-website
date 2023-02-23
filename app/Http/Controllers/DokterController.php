@@ -29,7 +29,7 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $list_dokter = Dokter::with('spesialis','minat_klinis')->paginate(10);
+        $list_dokter = Dokter::with('spesialis','minat_klinis','prestasi','pendidikan')->paginate(10);
         return view('dokter.index', compact('list_dokter'));
     }
 
@@ -41,7 +41,6 @@ class DokterController extends Controller
     public function create()
     {
         $list_spesialis = \App\Models\Spesialis::all();
-        // return view('dokter.form');
         return view('dokter.form', compact('list_spesialis'));
     }
 
@@ -115,7 +114,35 @@ class DokterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $validator = $this->validator($request->all());
+        // if ($validator->fails()) {
+        //     return response()->json(['error' => $validator->errors()], 400);
+        // }
+
+        try{
+            $dokter = Dokter::find($id);
+            if(!$dokter){
+                return response()->json(['error' => 'Data tidak ditemukan'], 404);
+            }
+            $image = $request->file('foto');
+            $path = '/images/dokter/';
+            if($image){
+                $image->storeAs($path, $image->hashName(), 'public');
+                $dokter->update([
+                    'nm_dokter' => $request->nm_dokter,
+                    'kd_sps' => $request->kd_sps,
+                    'imagepath' => ($image)? $path.$image->hashName() : $dokter->imagepath,
+                ]);
+            }else{
+                $dokter->update([
+                    'nm_dokter' => $request->nm_dokter,
+                    'kd_sps' => $request->kd_sps,
+                ]);
+            }
+        }catch(Exception $e){
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+        return response()->json(['success' => 'Berhasil mengubah data', 'data' => $dokter], 200);
     }
 
     /**

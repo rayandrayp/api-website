@@ -21,11 +21,16 @@
             <li><a class="nav-link" href="/api-website/artikel"><i class="far fa-file-alt"></i> <span>Artikel</span></a>
             </li>
             <li class="menu-header">Dokter</li>
-            <li><a class="nav-link" href="/api-website/berita"><i class="far fa-file-alt"></i> <span>List
-                        Dokter</span></a>
+            <li><a class="nav-link" href="{{ route('dokter.index') }}">
+                    <i class="far fa-file-alt"></i>
+                    <span>List Dokter</span>
+                </a>
             </li>
-            <li><a class="nav-link" href="/api-website/artikel"><i class="far fa-file-alt"></i> <span>Input Data
-                        Dokter</span></a>
+            <li>
+                <a class="nav-link" href="{{ route('dokter.create') }}">
+                    <i class="far fa-file-alt"></i>
+                    <span>Input Data Dokter</span>
+                </a>
             </li>
             <li class="menu-header">Stisla</li>
             <li class="dropdown">
