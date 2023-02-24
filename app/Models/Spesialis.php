@@ -20,6 +20,6 @@ class Spesialis extends Model
 
     public function dokter()
     {
-        return $this->hasMany(Dokter::class, 'kd_sps', 'kd_sps');
+        return $this->hasMany(Dokter::class, 'kd_sps', 'kd_sps')->select('kd_dokter', 'nm_dokter', 'kd_sps', 'imagepath');
     }
 }
