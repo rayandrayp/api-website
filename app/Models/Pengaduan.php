@@ -14,11 +14,17 @@ class Pengaduan extends Model
         'tanggal_kejadian',
         'lokasi_kejadian',
         'pengaduan',
-        'jenis_laporan_id'
+        'jenis_laporan_id',
+        'status',
     ];
 
     public function jenis_laporan()
     {
         return $this->belongsTo(JenisLaporanPengaduan::class, 'jenis_laporan_id');
+    }
+
+    public function respon_pengaduan()
+    {
+        return $this->hasOne(ResponPengaduan::class, 'pengaduan_id');
     }
 }

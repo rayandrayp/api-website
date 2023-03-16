@@ -21,6 +21,7 @@ class CreatePengaduansTable extends Migration
             $table->date('tanggal_kejadian')->nullable();
             $table->string('lokasi_kejadian')->nullable();
             $table->text('pengaduan');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

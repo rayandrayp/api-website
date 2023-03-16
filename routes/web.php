@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
 
 Auth::routes([
     'register' => false, // Registration Routes...
@@ -35,6 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('minat-klinis', App\Http\Controllers\MinatKlinisController::class);
     Route::resource('prestasi-dokter', App\Http\Controllers\PrestasiDokterController::class);
     Route::resource('pendidikan-dokter', App\Http\Controllers\PendidikanDokterController::class);
+    Route::resource('pengaduan', App\Http\Controllers\PengaduanController::class);
+    Route::resource('respon-pengaduan', App\Http\Controllers\ResponPengaduanController::class);
 });
 // Route::resource('berita', App\Http\Controllers\BeritaController::class);
 // Route::resource('artikel', App\Http\Controllers\ArtikelController::class);
