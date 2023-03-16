@@ -8,12 +8,11 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="dropdown active">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                <ul class="dropdown-menu">
-                    <!-- <li><a class="nav-link" href="index-0.html">General Dashboard</a></li> -->
-                    <li class=active><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
-                </ul>
+            <li>
+                <a class="nav-link" href="{{ route('pengaduan.index') }}">
+                    <i class="fas fa-exclamation"></i>
+                    <span>Dashboard</span>
+                </a>
             </li>
             <li class="menu-header">Konten</li>
             <li><a class="nav-link" href="/api-website/berita"><i class="far fa-file-alt"></i> <span>Berita</span></a>
@@ -33,12 +32,13 @@
                 </a>
             </li>
             <li class="menu-header">Pengaduan</li>
-            <li><a class="nav-link" href="{{ route('pengaduan.index') }}">
+            <li>
+                <a class="nav-link" href="{{ route('pengaduan.index') }}">
                     <i class="fas fa-exclamation"></i>
                     <span>List Pengaduan</span>
                 </a>
             </li>
-            <li class="menu-header">Stisla</li>
+            <!-- <li class="menu-header">Stisla</li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i>
                     <span>Components</span></a>
@@ -143,14 +143,24 @@
                     <li><a href="utilities-subscribe.html">Subscribe</a></li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i>
-                    <span>Credits</span></a></li>
+            <li>
+                <a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i>
+                    <span>Credits</span></a>
+            </li> -->
         </ul>
 
         <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
+            <!-- <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
                 <i class="fas fa-rocket"></i> Documentation
+            </a> -->
+            <!-- add logout button -->
+            <a class="btn btn-primary btn-lg btn-block btn-icon-split" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <i class="fas fa-sign-out-alt"></i> Logout
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
         </div>
     </aside>
 </div>
