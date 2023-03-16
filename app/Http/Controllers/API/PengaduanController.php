@@ -55,15 +55,18 @@ class PengaduanController extends Controller
         if ($validator->fails()) {
             return ApiFormatter::createAPI(400, 'Failed', 'Silahkan isi semua data yang diperlukan.');
         }
-
         $today = date('Y-m-d');
         $whatsapp = $request->whatsapp;
         $previous_pengaduan = Pengaduan::where('whatsapp', $whatsapp)->where('tanggal_kejadian', $today)->first();
         if ($previous_pengaduan) {
             return ApiFormatter::createAPI(400, 'Failed', 'Anda sudah mengirimkan pengaduan hari ini.');
         }
-
         try {
+            if($request->status == null){
+                $request->merge(['status' => 0]);
+            }else{
+                $request->status = 1;
+            }
             $pengaduan = Pengaduan::create($request->all());
         } catch (\Throwable $th) {
             return ApiFormatter::createAPI(400, 'Failed', $th->getMessage());
