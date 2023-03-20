@@ -31,7 +31,13 @@
                     <span>Input Data Dokter</span>
                 </a>
             </li>
-            <li class="menu-header">Pengaduan</li>
+            <li class="menu-header">Ulasan & Pengaduan</li>
+            <li>
+                <a class="nav-link" href="{{ route('review.index') }}">
+                    <i class="fas fa-star"></i>
+                    <span>List Ulasan</span>
+                </a>
+            </li>
             <li>
                 <a class="nav-link" href="{{ route('pengaduan.index') }}">
                     <i class="fas fa-exclamation"></i>
