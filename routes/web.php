@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('pendidikan-dokter', App\Http\Controllers\PendidikanDokterController::class);
     Route::resource('pengaduan', App\Http\Controllers\PengaduanController::class);
     Route::resource('respon-pengaduan', App\Http\Controllers\ResponPengaduanController::class);
+    Route::resource('review', App\Http\Controllers\ReviewController::class);
 });
 // Route::resource('berita', App\Http\Controllers\BeritaController::class);
 // Route::resource('artikel', App\Http\Controllers\ArtikelController::class);
