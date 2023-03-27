@@ -44,6 +44,12 @@
                     <span>List Pengaduan</span>
                 </a>
             </li>
+            <li>
+                <a class="nav-link" href="{{ route('laporan-spi.index') }}">
+                    <i class="fas fa-exclamation"></i>
+                    <span>List Pengaduan SPI</span>
+                </a>
+            </li>
             <!-- <li class="menu-header">Stisla</li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i>
