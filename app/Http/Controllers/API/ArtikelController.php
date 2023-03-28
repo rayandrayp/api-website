@@ -57,6 +57,11 @@ class ArtikelController extends Controller
                 ->take(5)
                 ->get();
         }
+        if (count($data) < 5) {
+            $data = Artikel::orderBy('views', 'desc')
+                ->take(5)
+                ->get();
+        }
         if ($data) {
             return ApiFormatter::createAPI(200, 'Success', $data);
         } else {
