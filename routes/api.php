@@ -11,6 +11,7 @@ use App\Http\Controllers\API\ReviewController;
 use App\Http\Controllers\API\PengaduanController;
 use App\Http\Controllers\API\SpesialisController;
 use App\Http\Controllers\API\JenisLaporanPengaduanController;
+use App\Http\Controllers\API\PermintaanPPIDController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,7 @@ Route::apiResource('review', ReviewController::class);
 Route::apiResource('pengaduan', PengaduanController::class);
 Route::apiResource('jenis-laporan-pengaduan', JenisLaporanPengaduanController::class);
 Route::apiResource('spesialis', SpesialisController::class);
+Route::apiResource('permintaan-ppid', PermintaanPPIDController::class);
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
