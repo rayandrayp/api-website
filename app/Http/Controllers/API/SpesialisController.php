@@ -51,9 +51,16 @@ class SpesialisController extends Controller
      */
     public function show($id)
     {
-        $spesialis = Spesialis::with('dokter')->find($id);
-
-        return ApiFormatter::createAPI(200, 'Success', $spesialis);
+        if ($id == "konsulan"){
+            $arrkonsulan = array('Sp.PD','Sp.P');
+            $spesialis = Spesialis::with('dokter')->findMany($arrkonsulan);
+    
+            return ApiFormatter::createAPI(200, 'Success', $spesialis);
+        } else {
+            $spesialis = Spesialis::with('dokter')->find($id);
+    
+            return ApiFormatter::createAPI(200, 'Success', $spesialis);
+        }
     }
 
     /**
