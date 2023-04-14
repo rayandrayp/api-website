@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Spesialis;
+use App\Models\Dokter;
 
 class SpesialisController extends Controller
 {
@@ -52,9 +53,12 @@ class SpesialisController extends Controller
     public function show($id)
     {
         if ($id == "konsulan"){
-            $arrkonsulan = array('Sp.PD','Sp.P');
-            $spesialis = Spesialis::with('dokter')->findMany($arrkonsulan);
-    
+            $arr_dokter = ['D0000141','201706004','D0000142'];
+            $spesialis['kd_sps'] = "konsulan";
+            $spesialis['nm_sps'] = "Dokter Konsulan";
+            $spesialis['dokter'] = Dokter::whereIn('kd_dokter', $arr_dokter)
+                                ->select('kd_dokter', 'nm_dokter', 'kd_sps', 'imagepath')
+                                ->get();
             return ApiFormatter::createAPI(200, 'Success', $spesialis);
         } else {
             $spesialis = Spesialis::with('dokter')->find($id);
