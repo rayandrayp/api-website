@@ -53,7 +53,7 @@ class SpesialisController extends Controller
     public function show($id)
     {
         if ($id == "konsulan"){
-            $arr_dokter = ['D0000141','201706004','D0000142'];
+            $arr_dokter = ['1910056850268','D0000141','201706004','D0000142','D0000144'];
             $spesialis['kd_sps'] = "konsulan";
             $spesialis['nm_sps'] = "Dokter Konsulan";
             $spesialis['dokter'] = Dokter::whereIn('kd_dokter', $arr_dokter)
