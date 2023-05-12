@@ -81,7 +81,7 @@
 <!-- Modal Detail Pengaduan -->
 <div class="modal fade" id="modal-detail-pengaduan" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Detail Pengaduan</h5>
@@ -112,7 +112,8 @@
 
                     <div class="form-group">
                         <label for="pengaduan_detail">Pengaduan</label>
-                        <textarea id="pengaduan_detail" cols="30" rows="10" class="form-control" readonly></textarea>
+                        <textarea id="pengaduan_detail" cols="30" rows="10" class="col-12 bg-light"
+                            style="height:150px; border: 0;" readonly></textarea>
                     </div>
                     <div class="form-group">
                         <label for="tanggal_kejadian_detail">Waktu Pengaduan</label>
