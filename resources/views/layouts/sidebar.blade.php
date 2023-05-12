@@ -15,9 +15,11 @@
                 </a>
             </li>
             <li class="menu-header">Konten</li>
-            <li><a class="nav-link" href="/api-website/berita"><i class="far fa-file-alt"></i> <span>Berita</span></a>
+            <li><a class="nav-link" href="{{ route('berita.index') }}"><i class="far fa-file-alt"></i>
+                    <span>Berita</span></a>
             </li>
-            <li><a class="nav-link" href="/api-website/artikel"><i class="far fa-file-alt"></i> <span>Artikel</span></a>
+            <li><a class="nav-link" href="{{ route('artikel.index') }}"><i class="far fa-file-alt"></i>
+                    <span>Artikel</span></a>
             </li>
             <li class="menu-header">Dokter</li>
             <li><a class="nav-link" href="{{ route('dokter.index') }}">
