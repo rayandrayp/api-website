@@ -60,9 +60,9 @@
 </section>
 
 <!-- Modal Detail Pengaduan -->
-<div class="modal fade" id="modal-detail-pengaduan" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade " id="modal-detail-pengaduan" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Detail Pengaduan</h5>
@@ -74,30 +74,40 @@
                 <form id="form-respon">
                     @csrf
                     <input type="hidden" name="pengaduan_id" id="pengaduan_id">
-                    <div class="form-group">
-                        <label for="nama_detail">Nama</label>
-                        <input type="text" readonly class="form-control" name="nama_detail" id="nama_detail">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="nama_detail">Nama</label>
+                            <input type="text" readonly class="form-control" name="nama_detail" id="nama_detail">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="whatsapp_detail">Kontak</label>
+                            <input type="text" readonly class="form-control" id="whatsapp_detail">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="whatsapp_detail">Kontak</label>
-                        <input type="text" readonly class="form-control" id="whatsapp_detail">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="jenis_laporan_detail">Jenis Laporan</label>
+                            <input type="text" readonly class="form-control" id="jenis_laporan_detail">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lokasi_detail">Lokasi Kejadian</label>
+                            <input type="text" readonly class="form-control" id="lokasi_detail">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="jenis_laporan_detail">Jenis Laporan</label>
-                        <input type="text" readonly class="form-control" id="jenis_laporan_detail">
-                    </div>
-                    <div class="form-group">
-                        <label for="pengaduan_detail">Pengaduan</label>
-                        <textarea id="pengaduan_detail" cols="30" rows="10" class="form-control" readonly></textarea>
-                    </div>
+
                     <div class="form-group">
                         <label for="tanggal_kejadian_detail">Tanggal Kejadian</label>
                         <input type="text" readonly class="form-control" id="tanggal_kejadian_detail">
                     </div>
+
+
                     <div class="form-group">
-                        <label for="lokasi_detail">Lokasi Kejadian</label>
-                        <input type="text" readonly class="form-control" id="lokasi_detail">
+                        <label for="pengaduan_detail">Pengaduan</label>
+                        <textarea id="pengaduan_detail" cols="30" class="col-12 bg-light text-dark"
+                            style="height:150px; border: 0;" readonly></textarea>
                     </div>
+
+
                     <div class="form-group">
                         <label for="respon">Respon</label>
                         <textarea name="respon" id="respon" cols="30" rows="10" class="form-control"></textarea>
