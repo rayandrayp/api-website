@@ -147,6 +147,9 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false,
         "responsive": true,
+        "order": [
+            [5, "desc"]
+        ],
     });
 });
 // should use delegated event instead of direct calling the element

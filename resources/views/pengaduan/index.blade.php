@@ -26,6 +26,7 @@
                                         <th>Pengaduan</th>
                                         <th>Kontak</th>
                                         <th>Jenis Laporan</th>
+                                        <th>Waktu Pengaduan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -39,6 +40,7 @@
                                         <td>
                                             {{ $pengaduan->jenis_laporan->jenis_laporan }}
                                         </td>
+                                        <td>{{ $pengaduan->created_at }}</td>
                                         <td>
                                             <button class="btn btn-primary btn-detail-pengaduan" type="button"
                                                 data-id="{{ $pengaduan->id }}">Detail</button>
@@ -140,6 +142,9 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false,
         "responsive": true,
+        "order": [
+            [4, "desc"]
+        ],
     });
 });
 // should use delegated event instead of direct calling the element
