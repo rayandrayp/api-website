@@ -117,6 +117,21 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $berita = Berita::findOrFail($id);
+            if ($berita) {
+                try {
+                    File::delete($this->absolutePath($data->banner));
+                } catch (\Throwable $th) {
+                    $fileNotExist = true;
+                }
+                $berita->delete();
+                return ApiFormatter::createAPI(200, 'Success', $berita);
+            } else {
+                return ApiFormatter::createAPI(400, 'Failed data.');
+            }
+        } catch (Exception $errmsg) {
+            return ApiFormatter::createAPI(400, $errmsg->getMessage());
+        }
     }
 }
