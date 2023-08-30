@@ -29,17 +29,22 @@
                         <div class="article-image" data-background="{{asset('storage'.$berita->banner)}}">
                         </div>
                         <div class="article-title">
-                            <h2><a href="#">{{$berita->judul}}</a></h2>
+                            <h2>
+                                <a href="#">
+                                    {{ strip_tags(Str::limit($berita->judul, 40)) }}
+                                </a>
+                            </h2>
                         </div>
                     </div>
                     <div class="article-details">
-                        <p>
-                            <!-- add elipsis after 100 characters -->
+                        <!-- <p>
                             {{ strip_tags(Str::limit($berita->isi, 80)) }}
-                        </p>
+                        </p> -->
                         <div class="article-cta">
                             <a href="https://www.rssoepraoen.co.id/informasi/berita/{{+$berita->id}}"
-                                class="btn btn-primary">Read More</a>
+                                class="btn btn-primary w-100">Read More</a>
+                            <button class="btn btn-danger mt-2 w-100" id="btn-delete-berita-{{ $berita->id }}">Hapus
+                                Berita</button>
                         </div>
                     </div>
                 </article>
@@ -48,4 +53,53 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('script')
+<script src="{{ asset('modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
+<script src="{{ asset('modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
+<script src="{{ asset('modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+<script src="{{ asset('js/page/features-post-create.js') }}"></script>
+
+<script>
+// check if btn-delete-berita pressed
+$('button[id^="btn-delete-berita-"]').on('click', function(e) {
+    console.log('delete button pressed!');
+    e.preventDefault();
+    var berita_id = $(this).attr('id').split('-')[3];
+    swal({
+            title: "Apakah anda yakin?",
+            text: "Setelah dihapus, Anda tidak akan dapat memulihkan berita ini!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            // if delete confirmed
+            if (willDelete) {
+                // delete request
+                $.ajax({
+                    url: "{{ url('berita') }}" + '/' + berita_id, // url berita
+                    type: "POST",
+                    data: {
+                        '_method': 'DELETE',
+                        '_token': "{{ csrf_token() }}",
+                    },
+                    success: function(data) {
+                        swal("Berita berhasil dihapus!", {
+                            icon: "success",
+                        }).then((willDelete) => {
+                            location.reload();
+                        });
+                    },
+                    error: function(data) {
+                        swal("Oops! Terjadi kesalahan.", {
+                            icon: "error",
+                        });
+                    }
+                });
+            }
+        });
+});
+</script>
 @endsection
